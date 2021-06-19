@@ -43,6 +43,10 @@ jobs:
       profile_path: /profile/
     
     steps:
+      - name: Display GH Env Vars
+        run: |
+          echo "Github Ref: $GITHUB_REF"
+          echo "Github Actor: $GITHUB_ACTOR"
       - name: Test env vars
         if: ${{ env.platform == 'Azure' }}
         run: |
