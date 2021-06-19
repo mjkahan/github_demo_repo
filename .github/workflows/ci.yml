@@ -48,4 +48,6 @@ jobs:
         run: |
           echo "The region is ${{ env.region }}"
           echo "The profile path is ${{ env.profile_path }}"
-          echo "You can also display the $platform"
+          echo "I really should $to_do"
+        env:
+          to_do: subscribe_to_the_channel
