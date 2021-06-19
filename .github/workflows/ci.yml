@@ -9,10 +9,11 @@ on:
 jobs:
   env:
     job_var: hello_from_job_level
+    
   build:
-  env:
-    build_only_var: hello_from_build
-    runs-on: ubuntu-latest
+    env:
+      build_only_var: hello_from_build
+      runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v2
