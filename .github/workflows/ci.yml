@@ -29,6 +29,8 @@ jobs:
 
   display:
     runs-on: ubuntu-latest
+    needs:
+      - build
     env:
       platform: azure
       region: midwest
