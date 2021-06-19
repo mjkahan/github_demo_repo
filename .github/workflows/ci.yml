@@ -34,5 +34,5 @@ jobs:
       - name: Test env vars
         if: ${{ env.platform == 'Azure' }}
         run: |
-          echo "The region is ${{ env.midwest }}"
+          echo "The region is ${{ env.region }}"
           echo "THe profile path is ${{ env.profile_path }}"
