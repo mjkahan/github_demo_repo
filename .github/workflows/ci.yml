@@ -33,7 +33,6 @@ jobs:
       platform: azure
       region: midwest
       profile_path: /profile/
-      profile_path: /profile/
     
     steps:
       - name: Test env vars
