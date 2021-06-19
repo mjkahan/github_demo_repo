@@ -6,6 +6,7 @@ on:
     
   workflow_dispatch:
 
+jobs:
   display:
     runs-on: ubuntu-latest
     env:
