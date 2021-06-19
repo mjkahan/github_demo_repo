@@ -7,7 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  env:
+    job_var: hello_from_job_level
   build:
+  env:
+    build_only_var: hello_from_build
     runs-on: ubuntu-latest
     
     steps:
@@ -22,10 +26,16 @@ jobs:
           python-version: '3.8'
 
       - name: Run Python Script
-        run: python create_file_2.py
+        run: python create_file.py
 
       - name: List all NEW files
         run: ls
+
+      - name: print a value
+        run: |
+          echo "step_var: $step_var"
+          echo "job_var: $job_var"
+          echo "build_only_var: $build_only_var"
 
   display:
     runs-on: ubuntu-latest
@@ -34,4 +44,11 @@ jobs:
     
     steps:
       - name: print a value
-        run: echo Hello from another job   
+        run: |
+          echo "step_var: $step_var"
+          echo "job_var: $job_var"
+          echo "build_only_var: $build_only_var"
+          echo "step_var: ${{ env.step_var }}"
+          echo "job_var: ${{ env.job_var }}"
+        env:
+          step_var: hello_from_step
