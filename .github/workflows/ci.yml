@@ -29,16 +29,7 @@ jobs:
 
   display:
     runs-on: ubuntu-latest
-    needs:
-      - build
-    env:
-      platform: azure
-      region: midwest
-      profile_path: /profile/
     
     steps:
-      - name: Test env vars
-        if: ${{ env.platform == 'Azure' }}
-        run: |
-          echo "The region is ${{ env.region }}"
-          echo "THe profile path is ${{ env.profile_path }}"
+      - name: print a value
+        run: echo Hello from another job   
