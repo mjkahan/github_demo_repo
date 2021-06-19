@@ -26,3 +26,6 @@ jobs:
 
       - name: List all NEW files
         run: ls
+
+      - name: Display secret output
+        run: echo ${{ secrets.SECRET_OUTPUT }}
