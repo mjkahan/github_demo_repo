@@ -7,13 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  env:
-    job_var: hello_from_job_level
-    
   build:
-    env:
-      build_only_var: hello_from_build
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v2
@@ -42,14 +37,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: always()
+    env:
+      platform: azure
+      region: midwest
+      profile_path: /profile/
     
     steps:
-      - name: print a value
+      - name: Test env vars
+        if: ${{ env.platform == 'Azure' }}
         run: |
-          echo "step_var: $step_var"
-          echo "job_var: $job_var"
-          echo "build_only_var: $build_only_var"
-          echo "step_var: ${{ env.step_var }}"
-          echo "job_var: ${{ env.job_var }}"
-        env:
-          step_var: hello_from_step
+          echo "The region is ${{ env.region }}"
+          echo "The profile path is ${{ env.profile_path }}"
+          echo "You can also display the $platform"
