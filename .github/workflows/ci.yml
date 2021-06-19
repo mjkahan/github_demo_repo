@@ -9,10 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      platform: azure
-      region: midwest
-      profile_path: /profile/
     
     steps:
       - uses: actions/checkout@v2
@@ -31,6 +27,15 @@ jobs:
       - name: List all NEW files
         run: ls
 
+  display:
+    runs-on: ubuntu-latest
+    env:
+      platform: azure
+      region: midwest
+      profile_path: /profile/
+      profile_path: /profile/
+    
+    steps:
       - name: Test env vars
         if: ${{ env.platform == 'Azure' }}
         run: |
