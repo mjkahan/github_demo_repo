@@ -9,6 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      platform: azure
+      region: midwest
+      profile_path: /profile/
     
     steps:
       - uses: actions/checkout@v2
@@ -27,5 +31,8 @@ jobs:
       - name: List all NEW files
         run: ls
 
-      - name: Display secret output
-        run: echo ${{ secrets.SECRET_OUTPUT }}
+      - name: Test env vars
+        if: ${{ env.platform == 'Azure' }}
+        run: |
+          echo "The region is ${{ env.midwest }}"
+          echo "THe profile path is ${{ env.profile_path }}"
